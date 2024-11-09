@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: rgb(243, 244, 246);
+}
+
+#category-nav {
+  scrollbar-color: #f44d4d #f1f1f1;
+  scrollbar-width: thin;
+}
+
+.custom-toast {
+  font-size: 1.5rem;
+  width: 400px;
+  padding: 16px;
+  text-align: center;
+}
