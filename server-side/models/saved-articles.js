@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const savedrticlleSchema = mongoose.Schema({
+const savedrticleSchema = mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -28,6 +28,6 @@ const savedrticlleSchema = mongoose.Schema({
   },
 });
 
-const SavedArticle = mongoose.model("savedArticle", savedrticlleSchema);
+const SavedArticle = mongoose.model("SavedArticle", savedrticleSchema);
 
 module.exports = SavedArticle;

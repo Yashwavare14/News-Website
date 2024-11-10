@@ -25,4 +25,18 @@ const handleSaveArticle = async (req, res) => {
   }
 };
 
-const handleGetArticle = async (req, res) => {};
+const handleGetArticle = async (req, res) => {
+  try {
+    const savedArticles = await SavedArticle.find({
+      userId: req.params.userId,
+    });
+    res.status(200).json(savedArticles);
+  } catch (error) {
+    res.status(500).json({ message: "error fetching articles", error });
+  }
+};
+
+module.exports = {
+  handleSaveArticle,
+  handleGetArticle,
+};
