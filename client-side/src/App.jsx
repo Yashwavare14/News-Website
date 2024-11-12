@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import NewsProvider from "./context/Newscontext";
 import AuthProvider from "./context/AuthContext";
 import { Saved } from "./pages/Saved";
+import ArticleProvider, { ArticleContext } from "./context/ArticleContext";
 
 const App = () => {
   const [user, setUser] = useState();
@@ -30,37 +31,14 @@ const App = () => {
   ]);
 
   return (
-    <AuthProvider>
-      <NewsProvider>
-        <RouterProvider router={router} />
-      </NewsProvider>
-    </AuthProvider>
+    <ArticleProvider>
+      <AuthProvider>
+        <NewsProvider>
+          <RouterProvider router={router} />
+        </NewsProvider>
+      </AuthProvider>
+    </ArticleProvider>
   );
-  // const [category, setCategory] = useState("general");
-
-  // const [searchQuery, setSearchQuery] = useState("");
-
-  // const [condition, setCondition] = useState(true);
-
-  // const handleSearch = (query) => {
-  //   setSearchQuery(query);
-  // };
-
-  // return (
-  //   <>
-  //     <Navbar
-  //       setCategory={setCategory}
-  //       onSearch={handleSearch}
-  //       setCondition={setCondition}
-  //     />
-  //     <NewsBoard
-  //       category={category}
-  //       searchQuery={searchQuery}
-  //       condition={condition}
-  //     />
-
-  //   </>
-  // );
 };
 
 export default App;

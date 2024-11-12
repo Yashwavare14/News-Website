@@ -1,11 +1,30 @@
+import { useContext, useEffect } from "react";
+import { ArticleContext } from "../context/ArticleContext";
+import SavedArticleCard from "../components/layout/SavedArticle";
+
 export const Saved = () => {
+  const { savedArticles, loadSavedArticles } = useContext(ArticleContext);
+  console.log(savedArticles);
+  useEffect(() => {
+    loadSavedArticles;
+  }, []);
   return (
     <section>
       <div className="m-8 ">
         <h1 className="text-4xl font-bold">Your Saved News</h1>
-        <p className="my-32 text-xl text-center">
-          The fuctionality for this page is under development.
-        </p>
+      </div>
+      <div className="flex flex-wrap justify-center ">
+        {savedArticles.map((article, index) => {
+          return (
+            <SavedArticleCard
+              key={index}
+              title={article.title}
+              description={article.description}
+              srcImg={article.urlToImage}
+              url={article.url}
+            />
+          );
+        })}
       </div>
     </section>
   );

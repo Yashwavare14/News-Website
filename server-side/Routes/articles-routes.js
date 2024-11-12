@@ -6,6 +6,6 @@ const {
 } = require("../controllers/article");
 
 router.post("/save", handleSaveArticle);
-router.get("/user/:userId", handleGetArticle);
+router.get("/user/:username", handleGetArticle);
 
 module.exports = router;

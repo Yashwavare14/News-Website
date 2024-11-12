@@ -14,7 +14,7 @@ export default function NewsBoard() {
               key={index}
               title={news.title}
               description={news.description}
-              src={news.urlToImage}
+              srcImg={news.urlToImage}
               url={news.url}
             />
           );

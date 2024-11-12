@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const savedrticleSchema = mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+  username: {
+    type: String,
     required: true,
   },
   articleId: {
     type: String,
     required: true,
+    unique: true,
   },
   title: {
     type: String,

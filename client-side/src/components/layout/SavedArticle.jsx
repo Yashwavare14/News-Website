@@ -1,33 +1,4 @@
-import { FaRegBookmark } from "react-icons/fa";
-import { useContext, useRef, useState } from "react";
-import { ArticleContext } from "../../context/ArticleContext";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/ReactToastify.css";
-import { handleSuccess, handleError } from "../../utils";
-
-export default function NewsCard({ title, description, srcImg, url }) {
-  const { saveArticle, success, message } = useContext(ArticleContext);
-  const [isSaved, setIsSaved] = useState(false);
-
-  const article = {
-    title,
-    description,
-    urlToImage: srcImg,
-    url,
-  };
-
-  const handleSaveArticle = async () => {
-    try {
-      await saveArticle(article);
-      setIsSaved(true); // Indicate that the article has been saved
-      if (success) {
-        handleSuccess(message);
-      }
-    } catch (error) {
-      console.error("Error saving article", error);
-    }
-  };
-
+const SavedArticleCard = ({ title, description, srcImg, url }) => {
   return (
     <section>
       <div className="inline-block m-3 w-72 md:w-80 bg-white border border-gray-200 rounded-lg shadow-lg ">
@@ -52,15 +23,15 @@ export default function NewsCard({ title, description, srcImg, url }) {
             </a>
             <button
               type="button"
-              onClick={handleSaveArticle}
               className="flex gap-1 items-center focus:outline-none text-white bg-red-700 hover:bg-red-800  font-medium rounded-lg text-sm px-3 py-2  dark:bg-red-600 dark:hover:bg-red-700"
             >
-              {isSaved ? "Saved" : "Save"} <FaRegBookmark />
+              Delete
             </button>
           </div>
         </div>
       </div>
-      <ToastContainer />
     </section>
   );
-}
+};
+
+export default SavedArticleCard;
