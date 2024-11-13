@@ -36,15 +36,16 @@ const ArticleProvider = ({ children }) => {
         );
         const { success, message } = response.data;
         setSavedArticles((prevArticles) => [...prevArticles, response.data]);
-        // if (success) {
-        //   handleSuccess(message);
-        // }
+
+        if (success) {
+          loadSavedArticles();
+        }
         console.log("article saved successfully");
       } catch (error) {
         console.log("Error saving article", error);
       }
     },
-    [username]
+    [username, loadSavedArticles]
   );
 
   useEffect(() => {

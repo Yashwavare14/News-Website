@@ -4,10 +4,12 @@ import SavedArticleCard from "../components/layout/SavedArticle";
 
 export const Saved = () => {
   const { savedArticles, loadSavedArticles } = useContext(ArticleContext);
-  console.log(savedArticles);
+
   useEffect(() => {
     loadSavedArticles;
   }, []);
+  console.log(savedArticles);
+
   return (
     <section>
       <div className="m-8 ">

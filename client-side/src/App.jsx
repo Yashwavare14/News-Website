@@ -10,17 +10,10 @@ import { Saved } from "./pages/Saved";
 import ArticleProvider, { ArticleContext } from "./context/ArticleContext";
 
 const App = () => {
-  const [user, setUser] = useState();
-
-  // Update localStorage whenever user state changes
-  useEffect(() => {
-    setUser(localStorage.getItem("loggedInUser"));
-  }, [user]);
-
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <AppLayout user={user} setUser={setUser} />,
+      element: <AppLayout />,
       children: [
         { path: "/", element: <NewsBoard /> },
         { path: "/register", element: <Register /> },

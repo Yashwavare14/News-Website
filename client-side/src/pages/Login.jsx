@@ -4,8 +4,10 @@ import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.css";
 import { handleSuccess, handleError } from "../utils";
+import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
+  const { updateUser } = useContext(AuthContext);
   const [loginInfo, setloginInfo] = useState({
     email: "",
     password: "",
@@ -51,7 +53,7 @@ const Login = () => {
         localStorage.setItem("loggedInUser", username);
         setTimeout(() => {
           navigate("/");
-          window.location.reload();
+          updateUser();
         }, 2000);
       } else if (error) {
         const details = error?.details[0]?.message;

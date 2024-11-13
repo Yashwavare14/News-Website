@@ -1,12 +1,9 @@
 import { FaRegBookmark } from "react-icons/fa";
 import { useContext, useRef, useState } from "react";
 import { ArticleContext } from "../../context/ArticleContext";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/ReactToastify.css";
-import { handleSuccess, handleError } from "../../utils";
 
 export default function NewsCard({ title, description, srcImg, url }) {
-  const { saveArticle, success, message } = useContext(ArticleContext);
+  const { saveArticle } = useContext(ArticleContext);
   const [isSaved, setIsSaved] = useState(false);
 
   const article = {
@@ -20,9 +17,6 @@ export default function NewsCard({ title, description, srcImg, url }) {
     try {
       await saveArticle(article);
       setIsSaved(true); // Indicate that the article has been saved
-      if (success) {
-        handleSuccess(message);
-      }
     } catch (error) {
       console.error("Error saving article", error);
     }
@@ -60,7 +54,6 @@ export default function NewsCard({ title, description, srcImg, url }) {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </section>
   );
 }

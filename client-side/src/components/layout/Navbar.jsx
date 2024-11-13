@@ -1,18 +1,23 @@
 import { useContext, useEffect, useState } from "react";
-import { FaSearch, FaBars } from "react-icons/fa";
-import { IoMdClose, IoMdPerson } from "react-icons/io";
+import { IoMdPerson } from "react-icons/io";
 import { NavLink, useNavigate } from "react-router-dom";
 import { NewsContext } from "../../context/Newscontext";
 import { AuthContext } from "../../context/AuthContext";
 import { handleSuccess } from "../../utils";
 
-export default function Navbar({ user, setUser }) {
+export default function Navbar() {
   const { setCategory, handleSearch, setCondition } = useContext(NewsContext);
-  //const { user, setUser } = useContext(AuthContext);
-
-  //const [loggedInUser, setLoggedInUser] = useState("");
+  const { user, updateUser } = useContext(AuthContext);
 
   const [inputValue, setInputValue] = useState("");
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    updateUser();
+  }, []);
+
+  console.log(user);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
@@ -24,17 +29,15 @@ export default function Navbar({ user, setUser }) {
     handleSearch(inputValue); // Pass the search query to App
   };
 
-  const navigate = useNavigate();
-
   // const loginUser = localStorage.getItem("loggedInUser");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("loggedInUser");
     handleSuccess("User Logged Out");
+    updateUser();
     setTimeout(() => {
       navigate("/");
-      window.location.reload();
     }, 2000);
   };
 
