@@ -1,7 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useRef, useContext, useEffect } from "react";
 import axios from "axios";
-import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
+//import { ToastContainer } from "react-toastify";
 import "react-toastify/ReactToastify.css";
 import { handleSuccess, handleError } from "../utils";
 import { AuthContext } from "../context/AuthContext";
@@ -128,7 +129,7 @@ const Login = () => {
           </NavLink>
         </div>
       </form>
-      <ToastContainer />
+      <Toaster />
     </section>
   );
 };

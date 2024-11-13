@@ -3,6 +3,7 @@ import { IoMdPerson } from "react-icons/io";
 import { NavLink, useNavigate } from "react-router-dom";
 import { NewsContext } from "../../context/Newscontext";
 import { AuthContext } from "../../context/AuthContext";
+import { Toaster } from "react-hot-toast";
 import { handleSuccess } from "../../utils";
 
 export default function Navbar() {
@@ -194,6 +195,7 @@ export default function Navbar() {
           className="w-full px-4 py-2 border border-gray-300 text-sm rounded focus:border-red-300 focus:outline-none sm:hidden md:hidden"
         />
       </form>
+      <Toaster />
     </nav>
   );
 }

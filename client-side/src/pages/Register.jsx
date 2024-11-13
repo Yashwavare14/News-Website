@@ -1,9 +1,8 @@
 import { useState, useRef } from "react";
 import axios from "axios";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/ReactToastify.css";
 import { handleSuccess, handleError } from "../utils";
 import { useNavigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const [signupInfo, setsignupInfo] = useState({
@@ -50,6 +49,8 @@ const Register = () => {
 
       if (success) {
         handleSuccess(message);
+      } else {
+        handleError(message);
       }
       setTimeout(() => {
         navigate("/login");
@@ -148,7 +149,7 @@ const Register = () => {
           Submit
         </button>
       </form>
-      <ToastContainer />
+      <Toaster />
     </section>
   );
 };

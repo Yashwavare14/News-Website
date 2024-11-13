@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 // UserProvider component to provide user state to the app
 const AuthProvider = ({ children }) => {
   //const username = localStorage.getItem("loggedInUser");
-  const [user, setUser] = useState(localStorage.getItem("loggedInUser") || "");
+  const [user, setUser] = useState("");
 
   // Sync the user state with localStorage
   const updateUser = () => {
@@ -15,9 +15,7 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const handleStorageChange = () => updateUser();
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
+    updateUser();
   }, []);
 
   return (

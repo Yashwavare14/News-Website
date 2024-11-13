@@ -1,9 +1,10 @@
 import { createContext, useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/ReactToastify.css";
-// import { handleSuccess, handleError } from "../utils";
+import { handleSuccess, handleError } from "../utils";
 
 export const ArticleContext = createContext();
 
@@ -39,6 +40,9 @@ const ArticleProvider = ({ children }) => {
 
         if (success) {
           loadSavedArticles();
+          handleSuccess(message);
+        } else {
+          handleError(message);
         }
         console.log("article saved successfully");
       } catch (error) {
@@ -57,7 +61,7 @@ const ArticleProvider = ({ children }) => {
       value={{ savedArticles, saveArticle, loadSavedArticles }}
     >
       {children}
-      {/*<ToastContainer autoClose={3000} />*/}
+      <Toaster />
     </ArticleContext.Provider>
   );
 };
