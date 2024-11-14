@@ -29,7 +29,7 @@ const ArticleProvider = ({ children }) => {
     async (article) => {
       try {
         const response = await axios.post(
-          "http://localhost:5000/saved-articles/save",
+          "https://news-website-1-g52y.onrender.com",
           {
             username,
             article,
