@@ -36,7 +36,7 @@ const Login = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/login",
+        "https://news-website-1-g52y.onrender.com",
         loginInfo,
         {
           headers: {
