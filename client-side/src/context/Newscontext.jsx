@@ -25,7 +25,9 @@ const NewsProvider = ({ children }) => {
     ? `category=${category}`
     : `q=${encodeURIComponent(searchQuery)}`;
 
-  let url = `${baseUrl}/${endpoint}?${query}&apiKey=133d0dae2eff44ebbae09c188a231fca`;
+  let url = `${baseUrl}/${endpoint}?${query}&apiKey=${
+    import.meta.env.VITE_API_KEY
+  }`;
 
   const fetchNews = async () => {
     const response = await fetch(url);
