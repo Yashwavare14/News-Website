@@ -16,7 +16,7 @@ const ArticleProvider = ({ children }) => {
     if (username) {
       try {
         const response = await axios.get(
-          `http://localhost:5000/saved-articles/user/${username}`
+          `https://news-website-1-g52y.onrender.com`
         );
         setSavedArticles(response.data);
       } catch (error) {
