@@ -25,15 +25,26 @@ const NewsProvider = ({ children }) => {
     ? `category=${category}`
     : `q=${encodeURIComponent(searchQuery)}`;
 
-  let url = `${baseUrl}/${endpoint}?${query}&apiKey=${
-    import.meta.env.VITE_API_KEY
-  }`;
+  let url = `${baseUrl}/${endpoint}?${query}`;
 
-  const fetchNews = async () => {
-    const response = await fetch(url);
-    const data = await response.json();
-    setArticles(data.articles);
-    console.log(data.articles);
+   const fetchNews = async () => {
+    try {
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`, // Add your API key here
+        },
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error:", response.status, errorData.message);
+        return;
+      }
+      const data = await response.json();
+      setArticles(data.articles);
+      console.log(data.articles);
+    } catch (error) {
+      console.error("Network error:", error.message);
+    }
   };
 
   useEffect(() => {
