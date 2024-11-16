@@ -25,7 +25,7 @@ const NewsProvider = ({ children }) => {
     ? `category=${category}`
     : `q=${encodeURIComponent(searchQuery)}`;
 
-  let url = `https://cors-anywhere.herokuapp.com/${baseUrl}/${endpoint}?${query}`;
+  let url = `${baseUrl}/${endpoint}?${query}`;
 
    const fetchNews = async () => {
     try {
