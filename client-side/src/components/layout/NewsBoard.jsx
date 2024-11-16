@@ -8,7 +8,7 @@ export default function NewsBoard() {
   return (
     <div className="flex flex-col bg-gray-100 pt-1 md:pt-6">
       <div className="flex flex-wrap justify-center ">
-        {articles.map((news, index) => {
+        {articles?.map((news, index) => {
           return (
             <NewsCard
               key={index}
