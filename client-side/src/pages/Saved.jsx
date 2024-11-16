@@ -16,7 +16,7 @@ export const Saved = () => {
         <h1 className="text-4xl font-bold">Your Saved News</h1>
       </div>
       <div className="flex flex-wrap justify-center ">
-        {savedArticles.map((article, index) => {
+        {savedArticles?.map((article, index) => {
           return (
             <SavedArticleCard
               key={index}
