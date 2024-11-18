@@ -25,27 +25,29 @@ const NewsProvider = ({ children }) => {
     ? `category=${category}`
     : `q=${encodeURIComponent(searchQuery)}`;
 
-  let url = `${baseUrl}/${endpoint}?${query}`;
+  //let url = `${baseUrl}/${endpoint}?${query}`;
 
-   const fetchNews = async () => {
-    try {
-      const response = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`, // Add your API key here
-        },
-      });
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Error:", response.status, errorData.message);
-        return;
-      }
-      const data = await response.json();
-      setArticles(data.articles);
-      console.log(data.articles);
-    } catch (error) {
-      console.error("Network error:", error.message);
+  const fetchNews = async () => {
+  const proxyUrl = "https://news-proxy-server.onrender.com/proxy/news"; // Replace with your Render proxy URL
+  const query = condition
+    ? `category=${category}`
+    : `searchQuery=${encodeURIComponent(searchQuery)}`;
+
+  try {
+    const response = await fetch(`${proxyUrl}?${query}`);
+    if (!response.ok) {
+      console.error("Error fetching news:", response.status);
+      return;
     }
-  };
+
+    const data = await response.json();
+    setArticles(data.articles);
+    console.log(data.articles);
+  } catch (error) {
+    console.error("Network error:", error.message);
+  }
+};
+
 
   useEffect(() => {
     fetchNews();
