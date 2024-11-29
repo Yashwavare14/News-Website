@@ -5,6 +5,7 @@ import { ArticleContext } from "../../context/ArticleContext";
 export default function NewsCard({ title, description, srcImg, url }) {
   const { saveArticle } = useContext(ArticleContext);
   const [isSaved, setIsSaved] = useState(false);
+  const username = localStorage.getItem("loggedInUser");
 
   const article = {
     title,
@@ -14,11 +15,13 @@ export default function NewsCard({ title, description, srcImg, url }) {
   };
 
   const handleSaveArticle = async () => {
-    try {
-      await saveArticle(article);
-      setIsSaved(true); // Indicate that the article has been saved
-    } catch (error) {
-      console.error("Error saving article", error);
+    if (username) {
+      try {
+        await saveArticle(article);
+        setIsSaved(true); // Indicate that the article has been saved
+      } catch (error) {
+        console.error("Error saving article", error);
+      }
     }
   };
 
