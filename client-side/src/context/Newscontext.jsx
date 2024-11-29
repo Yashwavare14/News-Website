@@ -42,7 +42,7 @@ const NewsProvider = ({ children }) => {
 
     const data = await response.json();
     setArticles(data.articles);
-    console.log(data.articles);
+    
   } catch (error) {
     console.error("Network error:", error.message);
   }
