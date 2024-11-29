@@ -35,7 +35,7 @@ const Register = () => {
     }
     try {
       const response = await axios.post(
-        "https://news-website-1-g52y.onrender.com",
+        "https://news-website-server.onrender.com",
         signupInfo,
         {
           headers: {
