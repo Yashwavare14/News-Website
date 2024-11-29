@@ -49,6 +49,13 @@ const ArticleProvider = ({ children }) => {
         } catch (error) {
           console.log("Error saving article", error);
         }
+      } else {
+        toast.error("Sign In before", {
+          position: "top-center",
+          hideProgressBar: false,
+          className: "custom-toast",
+          autoClose: 3000,
+        });
       }
     },
     [username, loadSavedArticles]
