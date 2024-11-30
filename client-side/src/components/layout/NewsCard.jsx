@@ -14,14 +14,14 @@ export default function NewsCard({ title, description, srcImg, url }) {
     url,
   };
 
-  const handleSaveArticle = async () => {
-    if (username) {
-      try {
+ const handleSaveArticle = async () => {
+    try {
+      if (username) {
         await saveArticle(article);
         setIsSaved(true); // Indicate that the article has been saved
-      } catch (error) {
-        console.error("Error saving article", error);
       }
+    } catch (error) {
+      console.error("Error saving article", error);
     }
   };
 
