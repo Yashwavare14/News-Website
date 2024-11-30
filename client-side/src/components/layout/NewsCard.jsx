@@ -16,10 +16,8 @@ export default function NewsCard({ title, description, srcImg, url }) {
 
  const handleSaveArticle = async () => {
     try {
-      if (username) {
         await saveArticle(article);
         setIsSaved(true); // Indicate that the article has been saved
-      }
     } catch (error) {
       console.error("Error saving article", error);
     }
