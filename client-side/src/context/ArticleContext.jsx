@@ -25,7 +25,7 @@ const ArticleProvider = ({ children }) => {
   const saveArticle = useCallback(
     async (article) => {
       if (!username) {
-      console.warn("No user logged in. Cannot save article.");
+      console.log("No user logged in. Cannot save article.");
       toast.error("Login Before Saving", {
         position: "top-center",
         hideProgressBar: false,
