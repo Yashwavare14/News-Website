@@ -26,12 +26,8 @@ const ArticleProvider = ({ children }) => {
     async (article) => {
       if (!username) {
       console.log("No user logged in. Cannot save article.");
-      toast.error("Login Before Saving", {
-        position: "top-center",
-        hideProgressBar: false,
-        className: "custom-toast",
-        autoClose: 3000,
-      });
+      handleError("Signin before Saving");
+        return;
       }
       try {
         const response = await axios.post(
