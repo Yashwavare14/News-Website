@@ -1,6 +1,7 @@
 import { FaRegBookmark } from "react-icons/fa";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { ArticleContext } from "../../context/ArticleContext";
+import { handleError } from "../../utils";
 
 export default function NewsCard({ title, description, srcImg, url }) {
   const { saveArticle } = useContext(ArticleContext);
