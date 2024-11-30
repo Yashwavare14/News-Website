@@ -27,6 +27,10 @@ const ArticleProvider = ({ children }) => {
 
   const saveArticle = useCallback(
     async (article) => {
+      if (!username) {
+    console.warn("No user logged in. Cannot save article.");
+    return; // Exit early if no username is available
+  }
       try {
         const response = await axios.post(
           "https://news-website-server.onrender.com/saved-articles/save",
