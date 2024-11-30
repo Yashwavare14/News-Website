@@ -15,6 +15,11 @@ export default function NewsCard({ title, description, srcImg, url }) {
   };
 
  const handleSaveArticle = async () => {
+    if (!username) {
+      console.log("No user logged in. Cannot save article.");
+      //handleError("Signin before Saving");
+        return;
+      }
     try {
         await saveArticle(article);
         setIsSaved(true); // Indicate that the article has been saved
