@@ -27,29 +27,26 @@ const ArticleProvider = ({ children }) => {
 
   const saveArticle = useCallback(
     async (article) => {
-      
-        try {
-          const response = await axios.post(
-            "http://localhost:5000/saved-articles/save",
-            {
-              username,
-              article,
-            }
-          );
-          const { success, message } = response.data;
-          setSavedArticles((prevArticles) => [...prevArticles, response.data]);
-  
-          if (success) {
-            loadSavedArticles();
-            handleSuccess(message);
-          } else {
-            handleError(message);
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/saved-articles/save",
+          {
+            username,
+            article,
           }
-          console.log("article saved successfully");
-        } catch (error) {
-          console.log("Error saving article", error);
+        );
+        const { success, message } = response.data;
+        setSavedArticles((prevArticles) => [...prevArticles, response.data]);
+
+        if (success) {
+          loadSavedArticles();
+          handleSuccess(message);
+        } else {
+          handleError(message);
         }
-      
+        console.log("article saved successfully");
+      } catch (error) {
+        console.log("Error saving article", error);
       }
     },
     [username, loadSavedArticles]
