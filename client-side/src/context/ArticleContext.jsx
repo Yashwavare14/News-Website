@@ -32,8 +32,7 @@ const ArticleProvider = ({ children }) => {
         className: "custom-toast",
         autoClose: 3000,
       });
-      return; // Exit early if no username is available
-  }
+      }
       try {
         const response = await axios.post(
           "https://news-website-server.onrender.com/saved-articles/save",
