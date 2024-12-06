@@ -28,7 +28,7 @@ const NewsProvider = ({ children }) => {
   //let url = `${baseUrl}/${endpoint}?${query}`;
 
   const fetchNews = async () => {
-  const proxyUrl = "https://news-proxy2.onrender.com/proxy/news"; // Replace with your Render proxy URL
+  const proxyUrl = import.meta.env.NEWS_API; // Replace with your Render proxy URL
   const query = condition
     ? `category=${category}`
     : `searchQuery=${encodeURIComponent(searchQuery)}`;
