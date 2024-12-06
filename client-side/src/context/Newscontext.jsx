@@ -59,7 +59,7 @@ const NewsProvider = ({ children }) => {
 
   return (
     <NewsContext.Provider
-      value={{ articles, setCategory, handleSearch, setCondition }}
+      value={{ articles, setCategory, handleSearch, setCondition, loading }}
     >
       {children}
     </NewsContext.Provider>
