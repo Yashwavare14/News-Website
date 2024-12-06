@@ -9,6 +9,8 @@ const NewsProvider = ({ children }) => {
 
   const [category, setCategory] = useState("general");
 
+  const [loading, setLoading] = useState(false);
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const [condition, setCondition] = useState(true);
@@ -30,7 +32,9 @@ const NewsProvider = ({ children }) => {
   const query = condition
     ? `category=${category}`
     : `searchQuery=${encodeURIComponent(searchQuery)}`;
-
+    
+ setLoading(true);
+    
   try {
     const response = await fetch(`${proxyUrl}?${query}`);
     if (!response.ok) {
@@ -43,7 +47,9 @@ const NewsProvider = ({ children }) => {
     
   } catch (error) {
     console.error("Network error:", error.message);
-  }
+  } finally {
+      setLoading(false); // Stop loading
+    }
 };
 
 
