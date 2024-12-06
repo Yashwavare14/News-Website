@@ -17,8 +17,6 @@ const NewsProvider = ({ children }) => {
     setSearchQuery(query);
   };
 
-  const baseUrl = "https://newsapi.org/v2";
-
   const endpoint = condition ? "top-headlines" : "everything";
 
   const query = condition
