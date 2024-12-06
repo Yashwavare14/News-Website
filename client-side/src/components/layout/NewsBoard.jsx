@@ -9,7 +9,7 @@ export default function NewsBoard() {
     <div className="flex flex-col bg-gray-100 pt-1 md:pt-6">
       <div className="flex flex-wrap justify-center ">
         { ( loading ? ( // Conditional rendering
-        <div className="flex justify-center items-center h-screen text-xl font-semibold">
+        <div className="flex justify-center items-center text-xl font-semibold">
           Loading...
         </div>
       ) :  articles?.map((news, index) => {
