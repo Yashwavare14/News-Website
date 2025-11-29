@@ -67,3 +67,4 @@ const NewsProvider = ({ children }) => {
 };
 
 export default NewsProvider;
+//tanstack query to be used here
